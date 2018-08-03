@@ -1,0 +1,10 @@
+//remove old validation messages
+$(".notice").remove();
+//remove old instances of the .has-error class
+$(".form-group").removeClass("has-error");
+ 
+//display new validation messages and add the Bootstrap .has-error class
+$("#nameBlock").append('<div class="notice"><%= escape_javascript(@errorName[0])%></div>');
+$("#nameBlock:contains(.)").closest(".form-group").addClass("has-error");
+$("#numberBlock").append('<div class="notice"><%= escape_javascript(@errorNumber[0])%></div>');
+$("#numberBlock:contains(.)").closest(".form-group").addClass("has-error");

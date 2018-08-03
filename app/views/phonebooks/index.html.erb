@@ -1,0 +1,37 @@
+<% if user_signed_in? %>
+  <div class="row">
+      <%= link_to '+ Add Contact', new_phonebook_path %> |
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  </div>
+
+  <div class="row table-responsive">
+    <table class="table table-bordered text-centered">
+      <tr>
+        <th class=col-md-1>No</th>
+        <th class=col-md-4>Name</th>
+        <th class=col-md-4>Number</th>
+        <th class=col-md-3>Options</th>
+      </tr>
+
+      <% no = 1 %>
+      <% @phonebook.each do |phonebook| %>
+        <tr>
+          <td><%= no %></td>
+          <td><%= phonebook.name %></td>
+          <td><%= phonebook.number %></td>
+          <td>
+            <%= link_to 'Edit', edit_phonebook_path(phonebook), class: 'btn btn-success btn-xs' %>
+            <%= link_to 'Destroy', phonebook_path(phonebook), class: 'btn btn-danger btn-xs',
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+        <% no = no + 1 %>
+      <% end %>
+    </table>
+  </div>
+
+<!--p>User Id : <%= current_user.id %><p-->
+<!--p>User Role : <%= current_user.role %></p-->
+<% end %>
+    

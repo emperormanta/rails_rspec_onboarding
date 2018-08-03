@@ -1,0 +1,36 @@
+<%= form_with model: @phonebook do |form|%>
+ 
+  <%-# COMMENT -%>
+  <% if @phonebook.errors.any? false %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@phonebook.errors.count, "error") %> prohibited
+        this contact from being saved:
+      </h2>
+      <ul>
+        <% @phonebook.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, required: true, class: 'form-control' %>
+    <span id = "nameBlock" class="help-block"></span>
+  </p>
+
+  <p>
+    <%= form.label :number %><br>
+    <%= form.text_field :number, required: true, class: 'form-control' %>
+    <span id = "numberBlock" class="help-block"></span>
+  </p>
+  
+  <p>
+    <%= form.submit 'Submit', class: 'btn btn-primary btn-md btn-block' %>
+  </p>
+
+<% end %>

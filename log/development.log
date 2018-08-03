@@ -60926,3 +60926,59 @@ Processing by PhonebooksController#edit as HTML
 Completed 200 OK in 36ms (Views: 30.4ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/phonebooks" for 127.0.0.1 at 2018-08-03 10:59:00 +0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kevin.goentoro/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by PhonebooksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/kevin.goentoro/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering phonebooks/index.html.erb within layouts/application
+  [1m[36mPhonebook Load (0.2ms)[0m  [1m[34mSELECT "phonebooks".* FROM "phonebooks"[0m
+  ↳ app/views/phonebooks/index.html.erb:17
+  Rendered phonebooks/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 264ms (Views: 236.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/phonebooks/45/edit" for 127.0.0.1 at 2018-08-03 10:59:04 +0700
+Processing by PhonebooksController#edit as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/kevin.goentoro/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPhonebook Load (0.2ms)[0m  [1m[34mSELECT  "phonebooks".* FROM "phonebooks" WHERE "phonebooks"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/phonebooks_controller.rb:19
+  Rendering phonebooks/edit.html.erb within layouts/application
+  Rendered phonebooks/_form.html.erb (8.0ms)
+  Rendered phonebooks/edit.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 38ms (Views: 34.2ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/phonebooks/45" for 127.0.0.1 at 2018-08-03 10:59:15 +0700
+Processing by PhonebooksController#update as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0hx8pyRd171sI6XEKpmKCliupA8SLq42gRMW/aJJMZx4flYPVJUttPK0Pjj6O/HZMilni1LAGSzAMUw8gHKTyg==", "phonebook"=>{"user_id"=>"1", "name"=>"Right", "number"=>"1234567890"}, "commit"=>"Submit", "id"=>"45"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/kevin.goentoro/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPhonebook Load (0.2ms)[0m  [1m[34mSELECT  "phonebooks".* FROM "phonebooks" WHERE "phonebooks"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/phonebooks_controller.rb:45
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/phonebooks_controller.rb:53
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/phonebooks_controller.rb:53
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/phonebooks_controller.rb:58
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/phonebooks_controller.rb:58
+Redirected to http://localhost:3000/phonebooks
+Completed 200 OK in 43974ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/phonebooks" for 127.0.0.1 at 2018-08-03 10:59:59 +0700
+Processing by PhonebooksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/kevin.goentoro/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering phonebooks/index.html.erb within layouts/application
+  [1m[36mPhonebook Load (0.4ms)[0m  [1m[34mSELECT "phonebooks".* FROM "phonebooks"[0m
+  ↳ app/views/phonebooks/index.html.erb:17
+  Rendered phonebooks/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 37ms (Views: 33.3ms | ActiveRecord: 0.6ms)
+
+

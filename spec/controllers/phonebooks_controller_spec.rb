@@ -32,7 +32,14 @@ RSpec.describe PhonebooksController, type: :controller do
 
     describe "PUT 'update/:id'" do
         it "allows an phone to be updated" do
-          put :update, params: { id: @phone.id , :phonebook => @phone.attributes = { :user_id => @phone.user_id, :name => "Home", :number => "0318281850" } }
+            put :update, xhr: true, params: { id: @phone.id , :phonebook => @phone.attributes = { :user_id => @phone.user_id, :name => "Home", :number => "0318281850" } }
         end
     end
+
+    describe "DELETE 'phonebooks/:id'" do
+        it "delete phonebook" do
+            delete :destroy, xhr: false, params: { id: @phone.id }
+        end
+    end
+    
 end

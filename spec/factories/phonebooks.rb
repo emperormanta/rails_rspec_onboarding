@@ -9,8 +9,8 @@ FactoryBot.define do
   end
 
   factory :user do
-    email "admin@admin.co.id"
-    password "admin@admin.co.id"
+    email Faker::Internet.email
+    password Faker::Internet.password
 end
 
   

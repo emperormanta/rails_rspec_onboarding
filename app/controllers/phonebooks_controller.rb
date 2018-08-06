@@ -44,32 +44,29 @@ class PhonebooksController < ApplicationController
     def update
         @phonebook = Phonebook.find(params[:id])
         # if @phonebook.update(phonebook_params)
+            
         #     redirect_to phonebooks_path
         # else
         #     render 'edit'
         # end
 
-        if @phonebook.update(phonebook_params)
-            respond_to do |format|
-                @errorName = []
-                @errorNumber = []
-                
-                if @phonebook.update(phonebook_params) 
-                    format.js { redirect_to phonebooks_path }
-                else
-                    format.js
-                    @phonebook.errors.any?
-                    if (@phonebook.errors["name"] != nil)
-                        @errorName.push(@phonebook.errors["name"][0])
-                    end
-                    if (@phonebook.errors["number"] != nil)
-                        @errorNumber.push(@phonebook.errors["number"][0])
-                    end
-                    #render 'edit'
+        respond_to do |format|
+            @errorName = []
+            @errorNumber = []
+            if @phonebook.update(phonebook_params)
+                #format.html { redirect_to phonebooks_path }
+                format.js { redirect_to phonebooks_path }
+            else
+                format.js
+                @phonebook.errors.any?
+                if (@phonebook.errors["name"] != nil)
+                    @errorName.push(@phonebook.errors["name"][0])
                 end
+                if (@phonebook.errors["number"] != nil)
+                    @errorNumber.push(@phonebook.errors["number"][0])
+                end
+                #render 'edit'
             end
-        else
-            
         end
     end
 
@@ -86,6 +83,6 @@ class PhonebooksController < ApplicationController
 
     private
     def phonebook_params
-    params.require(:phonebook).permit(:user_id, :name, :number)
+        params.require(:phonebook).permit(:user_id, :name, :number)
     end
 end
